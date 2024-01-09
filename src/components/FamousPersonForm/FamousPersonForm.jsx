@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import FamousPersonList from "../FamousPersonList/FamousPersonList";
 
 function FamousPersonForm() {
   let [famousPersonName, setPersonName] = useState("");
@@ -8,17 +9,19 @@ function FamousPersonForm() {
   const addPerson = (evt) => {
     evt.preventDefault();
 
-    axios.post('/api/people',{
-      name: famousPersonName,
-      role: famousPersonRole
-    })
-    .then(response => {
-      setPersonName('');
-      setPersonRole('');
-    })
-    .catch((error) => {
-      console.log('Error in POST', error)
-    })
+    axios
+      .post("/api/people", {
+        name: famousPersonName,
+        role: famousPersonRole,
+      })
+      .then((response) => {
+        FamousPersonList;
+        setPersonName("");
+        setPersonRole("");
+      })
+      .catch((error) => {
+        console.log("Error in POST", error);
+      });
   };
 
   return (
