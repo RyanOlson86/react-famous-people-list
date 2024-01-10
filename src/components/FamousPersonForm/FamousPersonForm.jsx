@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FamousPersonList from "../FamousPersonList/FamousPersonList";
 
-function FamousPersonForm() {
+function FamousPersonForm({fetchPeople}) {
   let [famousPersonName, setPersonName] = useState("");
   let [famousPersonRole, setPersonRole] = useState("");
 
@@ -15,7 +15,7 @@ function FamousPersonForm() {
         role: famousPersonRole,
       })
       .then((response) => {
-        FamousPersonList;
+        fetchPeople();
         setPersonName("");
         setPersonRole("");
       })
